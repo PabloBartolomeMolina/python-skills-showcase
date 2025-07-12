@@ -6,24 +6,22 @@ This repository presents a curated collection of Python projects, organized by s
 
 ## 📁 Repository Structure
 
-### beginner_projects/ – Simple scripts and games to practice Python basics
+** beginner_projects/ – ** Simple scripts and games to practice Python basics
 
-### intermediate_projects/ – Projects showcasing web scraping, data analysis, and API interaction
+** intermediate_projects/ – ** Projects showcasing web scraping, data analysis, and API interaction
 
-### advanced_projects/ – Complex applications including machine learning models, web services, and automation frameworks
+** advanced_projects/ – ** Complex applications including machine learning models, web services, and automation frameworks
 
-### notebooks/ – Jupyter notebooks for data exploration, algorithm analysis, and visualization examples
+** utils/ – ** Helper modules and shared utilities used across projects
 
-### utils/ – Helper modules and shared utilities used across projects
+** notebooks/ – ** Jupyter notebooks for data exploration, algorithm analysis, and visualization examples
 
-### tests/ – Unit tests for each project level to ensure code quality and correctness
-
-### docs/ – Documentation files, contribution guidelines, and setup instructions
+** docs/ – ** Documentation files, contribution guidelines, and setup instructions
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-Python 3.8 or higher
+Python 3.9.2 or higher
 pip (Python package installer)
 Git
 
