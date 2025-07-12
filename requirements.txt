@@ -1,0 +1,13 @@
+# requirements.txt
+
+# Core
+
+# Web & APIs
+
+# Data science / machine learning
+
+# Testing & linting
+
+# Utilities
+
+# Optional: database drivers
