@@ -1,29 +1,39 @@
 '''
     File Name: number_guessing_game.py
-    Version: 1.0.0
+    Version: 1.1.0
     Date: 13/07/2025
     Author: Pablo Bartolomé Molina
 '''
 
 import random
 
+def make_a_guess(user_number = 100, computer_number = 100):
+    while user_number not in range (0,51):
+        user_number = int(input("Choose a number between 0 and 50: "))
+    
+    if user_number == computer_number:
+        print("It's a correct guess!")
+        return True
+    else:
+        print("You lose!")
+        return False
+
 def main():
+    game_options = ["yes," "y", "no", "n"]
+    new_game = "None"
     
     while(1):
-        game_options = ["yes," "y", "no", "n"]
         computer_number = random.randint(0,50)
         user_number = 100
-        new_game = "None"
+        guess = 1
         
-        while user_number not in range (0,51):
-            user_number = int(input("Choose a number between 0 and 50: "))
+        while not make_a_guess(user_number, computer_number) :
+            print("Try #", guess)  
+            guess = guess + 1
+            if guess == 4:
+                break
         
         print(f"Computer chose: {computer_number}")
-        
-        if user_number == computer_number:
-            print("It's a correct guess!")
-        else:
-            print("You lose!")
         
         while new_game not in game_options:
             print("Invalid choice. Please choose yes, or no.")
