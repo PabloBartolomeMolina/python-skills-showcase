@@ -1,3 +1,10 @@
+'''
+    File Name: simple_todo_list.py
+    Version: 1.0.1
+    Date: 27/07/2025
+    Author: Pablo Bartolomé Molina
+'''
+
 def display_menu():
     print("\nTodo List Application")
     print("1. Show todo list")
