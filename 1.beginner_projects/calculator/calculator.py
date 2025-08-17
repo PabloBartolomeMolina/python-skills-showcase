@@ -15,18 +15,22 @@ def display_menu():
 
 def addition(a = 0, b = 0):
     print(f"Addition result of {a}+{b} is {a+b}")
+    return a+b
 
 def substraction(a = 0, b = 0):
     print(f"Substraction result of {a}-{b} is {a-b}")
+    return a-b
     
 def multiplication(a = 0, b = 1):
     print(f"Addition result of {a}*{b} is {a*b}")
+    return a*b
 
 def division(a = 0, b = 0):
     if b == 0:
         print("Cannot divide by 0")
     else:
         print(f"Addition result of {a}/{b} is {a/b}")
+        return a/b
 
 def user_menuChoice():
     while True:
@@ -47,25 +51,47 @@ def user_number():
             break
         except ValueError:
             print("That's not a valid number. Please try again.")
-    
+
+def user_reuse():
+    while True:
+        user_input = input("Reuse the result (y/n)? ")
+        if (user_input == 'y') or (user_input == 'n'):
+            return user_input
+            break
+        else:
+            print("That's not a valid answer. Please try again.")
+            
 def main():
-    todo_list = []
+    op_idx = 0
+    c = 0.0
+    reuse = 'n'
     while True:
         display_menu()
         choice = user_menuChoice()
         
-        if choice > 0 and choice < 5:
-            a = user_number()
+        if (choice > 0) and (choice < 5):
+            if op_idx > 0:
+                reuse = user_reuse()
+            else:
+                reuse = 'n'
+            if reuse == 'n':
+                a = user_number()
+            else:
+                a = c
             b = user_number()
         
         if choice == 1:
-            addition(a, b)
+            c = addition(a, b)
+            op_idx = op_idx + 1
         elif choice == 2:
-            substraction(a, b)
+            c = substraction(a, b)
+            op_idx = op_idx + 1
         elif choice == 3:
-            multiplication(a, b)
+            c = multiplication(a, b)
+            op_idx = op_idx + 1
         elif choice == 4:
-            division(a, b)
+            c = division(a, b)
+            op_idx = op_idx + 1
         elif choice == 5:
             print("Goodbye!")
             break
