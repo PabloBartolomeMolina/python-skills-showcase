@@ -20,10 +20,13 @@ def substraction(a = 0, b = 0):
     print(f"Substraction result of {a}-{b} is {a-b}")
     
 def multiplication(a = 0, b = 1):
-    print(f"Addition result of {a}/{b} is {a/b}")
+    print(f"Addition result of {a}*{b} is {a*b}")
 
 def division(a = 0, b = 0):
-    print(f"Addition result of {a}*{b} is {a*b}")
+    if b == 0:
+        print("Cannot divide by 0")
+    else:
+        print(f"Addition result of {a}/{b} is {a/b}")
 
 def user_menuChoice():
     while True:
@@ -34,6 +37,16 @@ def user_menuChoice():
             break
         except ValueError:
             print("That's not a valid choice (number). Please try again.")
+
+def user_number():
+    while True:
+        user_input = input("Enter a number: ")
+        try:
+            number = float(user_input)  # accepts integers, floats, and negatives
+            return number
+            break
+        except ValueError:
+            print("That's not a valid number. Please try again.")
     
 def main():
     todo_list = []
@@ -41,14 +54,18 @@ def main():
         display_menu()
         choice = user_menuChoice()
         
+        if choice > 0 and choice < 5:
+            a = user_number()
+            b = user_number()
+        
         if choice == 1:
-            addition()
+            addition(a, b)
         elif choice == 2:
-            substraction()
+            substraction(a, b)
         elif choice == 3:
-            multiplication()
+            multiplication(a, b)
         elif choice == 4:
-            division()
+            division(a, b)
         elif choice == 5:
             print("Goodbye!")
             break
