@@ -6,29 +6,35 @@ This repository presents a curated collection of Python projects, organized by s
 
 ## 📁 Repository Structure
 
-** beginner_projects/ – ** Simple scripts and games to practice Python basics
+**beginner_projects/**  
+Simple scripts and games to practice Python basics
 
-** intermediate_projects/ – ** Projects showcasing web scraping, data analysis, and API interaction
+**intermediate_projects/**  
+Projects showcasing web scraping, data analysis, and API interaction
 
-** advanced_projects/ – ** Complex applications including machine learning models, web services, and automation frameworks
+**advanced_projects/**  
+Complex applications including machine learning models, web services, and automation frameworks
 
-** utils/ – ** Helper modules and shared utilities used across projects
+**utils/**  
+Helper modules and shared utilities used across projects
 
-** notebooks/ – ** Jupyter notebooks for data exploration, algorithm analysis, and visualization examples
+**notebooks/**  
+Jupyter notebooks for data exploration, algorithm analysis, and visualization examples
 
-** docs/ – ** Documentation files, contribution guidelines, and setup instructions
+**docs/**  
+Documentation files, contribution guidelines, and setup instructions
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-Python 3.9.2 or higher
-pip (Python package installer)
+Python 3.9.2 or higher  
+pip (Python package installer)  
 Git
 
 ## Installation
-git clone https://github.com/yourusername/python-skills-showcase.git
-cd python-skills-showcase
-python -m venv venv
-source venv/bin/activate       # macOS/Linux
-venv\Scripts\activate.bat      # Windows
+git clone https://github.com/yourusername/python-skills-showcase.git  
+cd python-skills-showcase  
+python -m venv venv  
+source venv/bin/activate       # macOS/Linux  
+venv\Scripts\activate.bat      # Windows  
 pip install -r requirements.txt
