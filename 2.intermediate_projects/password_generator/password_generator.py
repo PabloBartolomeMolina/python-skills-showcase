@@ -1,6 +1,6 @@
 '''
     File Name: password_generator.py
-    Version: 1.1.0
+    Version: 1.1.1
     Date: 19/08/2025
     Author: Pablo Bartolomé Molina
 '''
@@ -45,14 +45,16 @@ def show_information():
     print(info)
 
 def check_length():
-    user_input = 0
-    while user_input <= 0:
+    while True:
         user_input = input("Enter wanted length for the password: ")
         try:
-            user_input = int(user_input)
+            number = int(user_input)
+            if number > 0:
+                return number  # valid input, exit function
+            else:
+                print("Please enter a number greater than 0.")
         except ValueError:
             print("That's not a valid length (number). Please try again.")
-    return number
 
 def get_user_pswd():
     user_text = ""
