@@ -1,9 +1,39 @@
 '''
     File Name: password_generator.py
-    Version: 1.0.0
+    Version: 1.1.0
     Date: 19/08/2025
     Author: Pablo Bartolomé Molina
 '''
+
+info = """
+==========================
+    Password Generator
+==========================
+
+Description:
+This application generates secure random passwords
+with customizable length and character sets.
+
+Features:
+- Choose password length
+- Include/exclude uppercase, lowercase, digits, symbols
+- Exclude ambiguous characters
+- Generate multiple passwords at once
+
+Disclaimer:
+This tool is intended for personal use and learning.
+It does not guarantee compliance with enterprise-level
+password security policies.
+"""
+
+constraints_info= """
+Your password must contain:
+- At least 8 characters
+- At least one number
+- At least 1 uppercase letter
+- At least 1 lowercase one
+- At least 1 special character from this list: &, @, *, #
+"""
 
 def display_menu():
     print("\nTPassword Generator")
@@ -12,36 +42,37 @@ def display_menu():
     print("3. Exit")
 
 def show_information():
-    info = """
-    ==========================
-        Password Generator
-    ==========================
-
-    Description:
-    This application generates secure random passwords
-    with customizable length and character sets.
-
-    Features:
-    - Choose password length
-    - Include/exclude uppercase, lowercase, digits, symbols
-    - Exclude ambiguous characters
-    - Generate multiple passwords at once
-
-    Disclaimer:
-    This tool is intended for personal use and learning.
-    It does not guarantee compliance with enterprise-level
-    password security policies.
-    """
     print(info)
 
-def get_user_input():
-    continue
+def check_length():
+    user_input = 0
+    while user_input <= 0:
+        user_input = input("Enter wanted length for the password: ")
+        try:
+            user_input = int(user_input)
+        except ValueError:
+            print("That's not a valid length (number). Please try again.")
+    return number
+
+def get_user_pswd():
+    user_text = ""
+    print("Find here the constraints for your password")
+    print(constraints_info)
+    while user_text == "":
+        user_text = input("Enter your password: ")
+        if user_text == "":
+            print("Your password is empty, enter a valid password.")
+        else:
+            break
+    return user_text
     
-def password_constraints():
-    continue
+def password_constraints(pswd = "", lenght = 1):
+    pass
 
 def new_password():
-    continue
+    check_length()
+    pswd = get_user_pswd()
+    password_constraints(pswd)
 
 def main():
     while True:
