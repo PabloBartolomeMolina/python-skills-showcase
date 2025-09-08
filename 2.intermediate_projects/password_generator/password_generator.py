@@ -1,9 +1,12 @@
 '''
     File Name: password_generator.py
-    Version: 1.1.1
+    Version: 2.0.0
     Date: 19/08/2025
     Author: Pablo Bartolomé Molina
 '''
+
+import random
+import string
 
 info = """
 ==========================
@@ -36,7 +39,7 @@ Your password must contain:
 """
 
 def display_menu():
-    print("\nTPassword Generator")
+    print("\nPassword Generator")
     print("1. New Password")
     print("2. Information")
     print("3. Exit")
@@ -46,35 +49,63 @@ def show_information():
 
 def check_length():
     while True:
-        user_input = input("Enter wanted length for the password: ")
+        user_input = input("Enter wanted length for the password (12 or more): ")
         try:
             number = int(user_input)
-            if number > 0:
+            if number >= 12:
                 return number  # valid input, exit function
             else:
-                print("Please enter a number greater than 0.")
+                print("Please enter a number greater than 12.")
         except ValueError:
             print("That's not a valid length (number). Please try again.")
 
-def get_user_pswd():
-    user_text = ""
-    print("Find here the constraints for your password")
-    print(constraints_info)
-    while user_text == "":
-        user_text = input("Enter your password: ")
-        if user_text == "":
-            print("Your password is empty, enter a valid password.")
-        else:
-            break
-    return user_text
+def generate_pswd(length = 1, constrains = ["","","",""]):
+    valid_answers = {"yes": True, "y": True, "no": False, "n": False}
+    options_bool = [valid_answers.get(opt.lower(), False) for opt in constrains]
     
-def password_constraints(pswd = "", lenght = 1):
-    pass
+    char_pool = ""
+    if options_bool[0]:  # uppercase
+        char_pool += string.ascii_uppercase
+    if options_bool[1]:  # lowercase
+        char_pool += string.ascii_lowercase
+    if options_bool[2]:  # digits
+        char_pool += string.digits
+    if options_bool[3]:  # special characters
+        char_pool += string.punctuation
+    
+    if not char_pool:
+        #raise ValueError("No character sets selected. At least one option must be 'yes'.")
+        print("Password cannot be generated with no set of characters selected")
+        return ""
+    
+    return ''.join(random.choice(char_pool) for _ in range(length))
+    
+def password_constraints():
+    retVal = []
+    valid_answers = {"yes": "yes", "y": "yes", "no": "no", "n": "no"}
+    questions = ["Upercases: ", "Lowercases: ", "Numbers: ", "Special characters: "]
+    
+    print("Now, choose characters to be included in your password.")
+    print('Answer with "yes"/"y" or "no"/"n".')
+    
+    for q in questions:
+        while True:
+            answer = input(f"{q}").strip().lower()
+            if answer in valid_answers:
+                retVal.append(valid_answers[answer])  # normalized
+                break
+            else:
+                print("Invalid input. Please enter 'yes'/'y' or 'no'/'n'.")
+    return retVal
 
 def new_password():
-    check_length()
-    pswd = get_user_pswd()
-    password_constraints(pswd)
+    length = check_length()
+    choice = password_constraints()
+    pswd = generate_pswd(length, choice)
+    if pswd == "":
+        pass
+    else:
+        print(f"Your password is: {pswd}")
 
 def main():
     while True:
