@@ -1,6 +1,6 @@
 '''
     File Name: coffee-machine.py
-    Version: 1.0.0
+    Version: 1.1.0
     Date: 14/09/2025
     Author: Pablo Bartolomé Molina
 '''
@@ -59,6 +59,38 @@ def main():
             end = True
         elif order == 'report':
             print(f"We have the following resources:\nWater: {resources['water']}ml\nMilk: {resources['milk']}ml\nCoffee: {resources['coffee']}g \nMoney: ${resources['money']}")
+        elif resources['water'] >= menu[order]['ingredients']['water']:
+            if resources['milk'] >= menu[order]['ingredients']['milk']:
+                if resources['coffee'] >= menu[order]['ingredients']['coffee']:
+                        print(f"Pay ${menu[order]['price']}\n")
+
+                        print("Insert coins")
+                        e = int(input("Insert 1 euro pieces: "))
+                        t = int(input("Insert 2 euro pieces: "))
+                        f = int(input("Insert 50 cents pieces: "))
+                        tw = int(input("Insert 20 cents pieces: "))
+                        te = int(input("Insert 10 cents pieces: "))
+                        fi = int(input("Insert 5 cents pieces: "))
+                        total = (e * 1) + (t * 2) + (f * 0.50) + (tw * 0.20) + (te * 0.10) + (fi * 0.05)
+
+                        if total == menu[order]['price']:
+                            resources['water'] = resources['water'] - menu[order]['ingredients']['water']
+                            resources['coffee'] = resources['coffee'] - menu[order]['ingredients']['coffee']
+                            resources['milk'] = resources['milk'] - menu[order]['ingredients']['milk']
+                            resources['money'] = resources['money'] + menu[order]['price']
+                            print("Transaction successful. Here is your coffee!")
+                        elif total > menu[order]['price']:
+                            change = total - menu[order]['price']
+                            print(f"You have inserted extra coins. Here is your change €{change}\n")
+                        else:
+                            print("Payment not complete. Cannot process order")
+
+                else:
+                    print("\nResources insufficient! There is not enough coffee!\n")
+            else:
+                print("\nResources insufficient! There is not enough milk!\n")
+        else:
+            print("\nResources insufficient! There is not enough water!\n")
 
 if __name__ == "__main__":
     main()
